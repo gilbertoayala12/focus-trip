@@ -1,0 +1,17 @@
+<div class="timer-container">
+    <h1>How long will you focus?</h1>
+
+    <div class="timer-container__available-timers">
+        @for (d of timerDuration; track d) {
+        <div (click)="select(d)" class="timer-container__available-timers__timers">
+            <div class="timer-container__available-timers__timers__duration" [class.active]="selected() === d">
+                {{ d }} min
+            </div>
+        </div>
+        }
+    </div>
+    <button (click)="confirm()" class="timer-container__confirm" [disabled]="!selected()">
+        Pick a destination
+    </button>
+
+</div>

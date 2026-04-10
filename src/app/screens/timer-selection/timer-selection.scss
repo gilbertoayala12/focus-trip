@@ -1,0 +1,59 @@
+.timer-container {
+    h1 {
+        display: flex;
+        justify-content: center;
+    }
+
+    display: block;
+
+    &__available-timers {
+        display: flex;
+        gap: 15px;
+        border: 1px solid darkcyan;
+        margin: 5vh 1vh;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        &__timers {
+            height: 10vh;
+            width: 20vh;
+            border: solid red;
+
+            &__duration {
+                display: flex;
+                justify-content: center;
+                flex-direction: row;
+                height: stretch;
+                align-items: center;
+            }
+
+            &:hover {
+                background-color: navajowhite;
+            }
+
+            .active {
+                color: blue;
+            }
+        }
+    }
+
+    &__confirm {
+        position: relative;
+        height: 10vh;
+        width: 20vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        margin: 0 auto;
+
+        &:hover {
+            background: rgba(red, 0.2);
+            border-color: red;
+            box-shadow: 0 0 15px red;
+        }
+    }
+}

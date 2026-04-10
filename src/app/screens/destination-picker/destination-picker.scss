@@ -1,0 +1,45 @@
+.destination-container {
+    &__selected-timer {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__available-routes {
+        display: flex;
+        justify-content: space-around;
+        .active {
+            color: blue;
+            border: solid 1px red;
+        }
+
+        :hover {
+            color: purple;
+        }
+
+        &__individual-route {
+            border: solid 1px cyan;
+        }
+    }
+
+    &__confirm {
+        margin-top: 20px;
+        position: relative;
+        height: 10vh;
+        width: 20vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        margin: 20px auto;
+
+        &:hover {
+            background: rgba(red, 0.2);
+            border-color: red;
+            box-shadow: 0 0 15px red;
+        }
+    }
+
+}
