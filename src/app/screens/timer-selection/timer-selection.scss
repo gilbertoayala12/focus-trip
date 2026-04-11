@@ -1,15 +1,28 @@
 .timer-container {
-    h1 {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-text);
+    justify-content: center;
+
+    &__title {
+        z-index: 1;
         display: flex;
         justify-content: center;
+        margin-top: 4vh;
+        flex-direction: column;
+        align-items: center;
+
+        p {
+            color: white;
+        }
     }
 
-    display: block;
 
     &__available-timers {
         display: flex;
-        gap: 15px;
-        border: 1px solid darkcyan;
+        gap: 30px;
         margin: 5vh 1vh;
         flex-wrap: wrap;
         justify-content: space-evenly;
@@ -17,7 +30,6 @@
         &__timers {
             height: 10vh;
             width: 20vh;
-            border: solid red;
 
             &__duration {
                 display: flex;
@@ -27,33 +39,17 @@
                 align-items: center;
             }
 
-            &:hover {
-                background-color: navajowhite;
-            }
-
-            .active {
-                color: blue;
-            }
         }
     }
+}
 
-    &__confirm {
-        position: relative;
-        height: 10vh;
-        width: 20vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
-        margin: 0 auto;
 
-        &:hover {
-            background: rgba(red, 0.2);
-            border-color: red;
-            box-shadow: 0 0 15px red;
-        }
+@keyframes road-move {
+    from {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    to {
+        transform: translateX(-50%) translateY(90px);
     }
 }

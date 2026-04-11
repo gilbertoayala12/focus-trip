@@ -1,27 +1,39 @@
 <div class="destination-container">
-    <button (click)="goHome()">home</button>
-    <div class="destination-container__selected-timer">
-        Selected Timer: {{selectedTimer}}
-    </div>
+    <app-road-background />
+    <app-back></app-back>
+    <div class="screen">
 
-    <div class="destination-container__available-routes">
-        @for (route of availableRoutes(); track $index) {
-        <div [class.active]="selected() === route" (click)="select(route)" class="destination-container__available-routes__individual-route">
-            <div>
-                <p>City: {{route.city | titlecase}}</p>
-            </div>
-            <div>
-                <p>From: {{route.from | titlecase}}</p>
-                <p>To: {{route.to | titlecase}}</p>
-            </div>
-            <div>
-                <p>Weather: {{route.weather | titlecase}}</p>
-            </div>
+        <div class="destination-container__header">
+            <h1>Choose your destination</h1>
+            <p class="muted">{{ selectedTimer }} min · pick a route</p>
         </div>
-        }
+
+        <div class="destination-container__routes">
+            @for (route of availableRoutes(); track $index) {
+            <div class="route-card" [class.route-card--selected]="selected() === route" (click)="select(route)">
+
+                <div class="route-card__city">{{ route.city | titlecase }}</div>
+
+                <div class="route-card__journey">
+                    <span class="route-card__place">{{ route.from }}</span>
+                    <span class="route-card__arrow">→</span>
+                    <span class="route-card__place">{{ route.to }}</span>
+                </div>
+
+                <div class="route-card__badges">
+                    <span class="badge">{{ route.weather | titlecase }}</span>
+                    <span class="badge">{{ route.scenery | titlecase }}</span>
+                </div>
+
+            </div>
+            }
+        </div>
+
+        <div class="destination-container__footer">
+            <button class="squishy squishy--neon btn--confirm" (click)="confirm()" [disabled]="!selected()">
+                Start journey
+            </button>
+        </div>
+
     </div>
-
-    <button class="destination-container__confirm" (click)="confirm()" [disabled]="!selected()">Confirm Route</button>
-
-
 </div>

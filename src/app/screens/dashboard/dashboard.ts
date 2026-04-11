@@ -1,24 +1,20 @@
-import { Component, inject, OnInit, Signal } from '@angular/core';
-import { Navigation } from '../../core/router/navigation';
-import Trip from '../../services/trip';
+import { Component, inject, OnInit } from '@angular/core';
 import { Timer } from '../../services/timer';
+import Trip from '../../services/trip';
+import { Back } from '../../shared/back/back';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [Back],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
 export class Dashboard implements OnInit {
-  private navigation = inject(Navigation);
   protected currentTrip = inject(Trip);
   private timer = inject(Timer);
 
   public ETA: any;
   ngOnInit(): void {
     this.timer.start();
-  }
-  goHome() {
-    this.navigation.goHome();
   }
 }
