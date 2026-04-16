@@ -1,10 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Timer } from '../../services/timer';
+import RoadBackground from '../../shared/road-background/road-background';
 
 @Component({
   selector: 'app-timer-selection',
-  imports: [],
+  imports: [RoadBackground],
   templateUrl: './timer-selection.html',
   styleUrl: './timer-selection.scss',
 })

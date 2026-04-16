@@ -1,0 +1,130 @@
+.loading-container {
+    .rotated-road-bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background-color: #111318;
+        transform: rotate(90deg);
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: -200px;
+            background: radial-gradient(ellipse 20% 120% at 23% 1%, #1C1E26 40%, transparent 70%);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 4px;
+            top: -90px;
+            bottom: 0;
+            height: calc(100% + 200px);
+            background: repeating-linear-gradient(to bottom,
+                    #F5A623 0px,
+                    #F5A623 40px,
+                    transparent 40px,
+                    transparent 200px);
+            opacity: 0.2;
+            animation: road-move 0.8s linear infinite;
+            will-change: transform;
+        }
+    }
+
+    .road-vignette {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, #111318 0%, transparent 30%, transparent 70%, #111318 100%);
+        pointer-events: none;
+    }
+
+    @keyframes road-move {
+        from {
+            transform: translateX(-60%) translateY(0);
+        }
+
+        to {
+            transform: translateX(-60%) translateY(200px);
+        }
+    }
+
+    .screen {
+        .loader {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 37px;
+
+            &__status {
+                font-family: var(--font-mono);
+                font-size: 13px;
+                color: var(--color-muted);
+                letter-spacing: 0.08em;
+                animation: fadeIn 1s ease;
+            }
+        }
+
+        .car {
+            margin-right: 100px;
+            animation: car-idle 1.2s ease-in-out infinite alternate;
+
+            &__wheel--left,
+            &__wheel--right {
+                transform-box: fill-box;
+                transform-origin: center;
+                animation: wheel-spin 0.6s linear infinite;
+            }
+
+            &__wheel--right {
+                animation-delay: 0.1s;
+            }
+
+            &__body {
+                animation: shake 0.5s ease-in-out infinite alternate;
+            }
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateY(-1%);
+            }
+
+            100% {
+                transform: translateY(2%);
+            }
+        }
+
+        @keyframes wheel-spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes car-idle {
+            from {
+                transform: scale(2.1) translateX(-2px);
+            }
+
+            to {
+                transform: scale(2.1) translateX(20px);
+            }
+        }
+    }
+}

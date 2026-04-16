@@ -1,45 +1,85 @@
 .destination-container {
-    &__selected-timer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvb;
+    justify-content: center;
+
+
+    .destination-container__routes {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+        overflow-y: auto;
+        flex: 1;
+        padding: 10px 2px;
     }
 
-    &__available-routes {
-        display: flex;
-        justify-content: space-around;
-        .active {
-            color: blue;
-            border: solid 1px red;
-        }
-
-        :hover {
-            color: purple;
-        }
-
-        &__individual-route {
-            border: solid 1px cyan;
-        }
-    }
-
-    &__confirm {
-        margin-top: 20px;
-        position: relative;
-        height: 10vh;
-        width: 20vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .route-card {
+        background: var(--color-surface);
+        border: 0.5px solid var(--color-border);
+        border-radius: var(--radius-md);
+        padding: 16px 20px;
         cursor: pointer;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
-        margin: 20px auto;
+        transition: all 250ms ease;
 
-        &:hover {
-            background: rgba(red, 0.2);
-            border-color: red;
-            box-shadow: 0 0 15px red;
+        &__city {
+            font-size: 11px;
+            color: var(--color-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
         }
+
+        &__journey {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 12px;
+        }
+
+        &__arrow {
+            color: var(--color-accent);
+        }
+
+        &__place {
+            flex: 1;
+
+            &:last-of-type {
+                text-align: right;
+            }
+        }
+
+        &__badges {
+            display: flex;
+            gap: 8px;
+        }
+
+        &--selected {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 16px 0 rgba(245, 166, 35, 0.2);
+
+            .route-card__city {
+                color: var(--color-accent);
+            }
+        }
+    }
+
+    .badge {
+        font-size: 11px;
+        color: var(--color-muted);
+        background: var(--color-bg);
+        border: 0.5px solid var(--color-border);
+        border-radius: var(--radius-pill);
+        padding: 3px 10px;
+    }
+
+    .destination-container__footer {
+        padding: 16px 0 8px;
+        display: flex;
+        justify-content: center;
     }
 
 }

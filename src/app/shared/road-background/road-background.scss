@@ -1,0 +1,45 @@
+.road-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: #111318;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 100% at 50% 100%, #1C1E26 40%, transparent 70%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 4px;
+    top: -90px;
+    bottom: 0;
+    height: calc(100% + 90px);
+    background: repeating-linear-gradient(
+      to bottom,
+      #F5A623 0px,
+      #F5A623 40px,
+      transparent 40px,
+      transparent 90px
+    );
+    opacity: 0.2;
+    animation: road-move 0.8s linear infinite;
+    will-change: transform;
+  }
+}
+
+.road-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #111318 0%, transparent 30%, transparent 70%, #111318 100%);
+  pointer-events: none;
+}
+
+@keyframes road-move {
+  from { transform: translateX(-50%) translateY(0); }
+  to   { transform: translateX(-50%) translateY(90px); }
+}

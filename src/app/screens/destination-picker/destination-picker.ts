@@ -5,10 +5,12 @@ import { RoutePack } from '../../data/route-packs.data';
 import RoutePacks from '../../services/route-pack';
 import { Timer } from '../../services/timer';
 import { Navigation } from '../../core/router/navigation';
+import RoadBackground from '../../shared/road-background/road-background';
+import { Back } from "../../shared/back/back";
 
 @Component({
   selector: 'app-destination-picker',
-  imports: [TitleCasePipe],
+  imports: [TitleCasePipe, RoadBackground, Back],
   templateUrl: './destination-picker.html',
   styleUrl: './destination-picker.scss',
 })
@@ -33,8 +35,5 @@ export class DestinationPicker {
     if (!selectedRoute) return;
     this.routePackService.select(selectedRoute);
     this.router.navigate(['/loading']);
-  }
-  goHome() {
-    this.navigation.goHome();
   }
 }

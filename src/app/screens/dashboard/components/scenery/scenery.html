@@ -1,0 +1,45 @@
+<div class="scenery">
+  <div class="scenery__photo"
+    [style.background-image]="'url(' + trip.photoUrl() + ')'">
+  </div>
+
+  <div class="scenery__tint"
+    [class.scenery__tint--rain]="packs.selectedPack()?.weather === 'rainy'"
+    [class.scenery__tint--cloud]="packs.selectedPack()?.weather === 'cloudy'"
+    [class.scenery__tint--fog]="packs.selectedPack()?.weather === 'foggy'">
+  </div>
+
+  <div class="scenery__fade"></div>
+
+  @if (packs.selectedPack()?.weather === 'foggy') {
+    <div class="scenery__fog">
+      <div class="fog-band"></div>
+      <div class="fog-band"></div>
+      <div class="fog-band"></div>
+    </div>
+  }
+
+  @if (packs.selectedPack()?.weather === 'rainy') {
+    <div class="scenery__rain">
+      <svg viewBox="0 0 390 420" preserveAspectRatio="xMidYMid slice">
+        <line x1="35"  y1="0" x2="28"  y2="55" stroke="#b8d8e8" stroke-width="0.7" opacity="0.4"><animate attributeName="y1" from="-30" to="420" dur="0.6s"  repeatCount="indefinite"/><animate attributeName="y2" from="25" to="475" dur="0.6s" repeatCount="indefinite"/></line>
+        <line x1="100" y1="0" x2="93"  y2="55" stroke="#b8d8e8" stroke-width="0.7" opacity="0.35"><animate attributeName="y1" from="-30" to="420" dur="0.7s" begin="0.15s" repeatCount="indefinite"/><animate attributeName="y2" from="25" to="475" dur="0.7s" begin="0.15s" repeatCount="indefinite"/></line>
+        <line x1="180" y1="0" x2="173" y2="55" stroke="#b8d8e8" stroke-width="0.7" opacity="0.4"><animate attributeName="y1" from="-30" to="420" dur="0.55s" begin="0.3s" repeatCount="indefinite"/><animate attributeName="y2" from="25" to="475" dur="0.55s" begin="0.3s" repeatCount="indefinite"/></line>
+        <line x1="260" y1="0" x2="253" y2="55" stroke="#b8d8e8" stroke-width="0.7" opacity="0.35"><animate attributeName="y1" from="-30" to="420" dur="0.65s" begin="0.1s" repeatCount="indefinite"/><animate attributeName="y2" from="25" to="475" dur="0.65s" begin="0.1s" repeatCount="indefinite"/></line>
+        <line x1="340" y1="0" x2="333" y2="55" stroke="#b8d8e8" stroke-width="0.7" opacity="0.4"><animate attributeName="y1" from="-30" to="420" dur="0.58s" begin="0.45s" repeatCount="indefinite"/><animate attributeName="y2" from="25" to="475" dur="0.58s" begin="0.45s" repeatCount="indefinite"/></line>
+      </svg>
+    </div>
+  }
+
+  <div class="scenery__top">
+    <div class="badge badge--weather">
+      {{ packs.selectedPack()?.weather | titlecase }}
+    </div>
+    <div class="badge badge--time">{{ trip.eta() }}</div>
+  </div>
+
+  <div class="scenery__dest" [class.visible]="trip.showDestination()">
+    <div class="scenery__dest-label">arriving at</div>
+    <div class="scenery__dest-name">{{ packs.selectedPack()?.to }}</div>
+  </div>
+</div>
