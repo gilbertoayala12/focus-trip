@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, take, timer } from 'rxjs';
 
@@ -16,11 +16,14 @@ export class LoadingAnimation implements OnInit {
     'Closing the trunk...',
     'Starting up the engine...',
     'Almost there...',
-    'All packed, lets go!'
+    'All packed, lets go!',
   ];
-  currentMessages$ = timer(0,1000).pipe(
-    map(index => this.loadingMessages[index] || this.loadingMessages[this.loadingMessages.length - 1]),
-    take(5)
+  currentMessages$ = timer(0, 1000).pipe(
+    map(
+      (index) =>
+        this.loadingMessages[index] || this.loadingMessages[this.loadingMessages.length - 1],
+    ),
+    take(5),
   );
   ngOnInit(): void {
     setTimeout(() => {

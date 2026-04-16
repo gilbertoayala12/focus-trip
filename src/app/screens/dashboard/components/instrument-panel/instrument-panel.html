@@ -1,0 +1,32 @@
+<div class="panel">
+  <div class="eta-block">
+    <div class="eta-left">
+      <div class="eta-sublabel">time remaining</div>
+      <div class="eta-number">{{ trip.eta() }}</div>
+    </div>
+    <div class="eta-right">
+      <div class="route-label">{{ packs.selectedPack()?.from }}</div>
+      <div class="route-arrow">↓</div>
+      <div class="route-label route-label--dest">{{ packs.selectedPack()?.to }}</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat__label">Speed</div>
+      <div class="stat__value">{{ trip.speed() }}<span class="stat__unit">mph</span></div>
+    </div>
+    <div class="stat">
+      <div class="stat__label">Scenery</div>
+      <div class="stat__value stat__value--sm">
+        {{ packs.selectedPack()?.scenery | titlecase }}
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat__label">Focus</div>
+      <div class="stat__value">
+        {{ packs.selectedPack()?.durationMinutes }}<span class="stat__unit">min</span>
+      </div>
+    </div>
+  </div>
+</div>

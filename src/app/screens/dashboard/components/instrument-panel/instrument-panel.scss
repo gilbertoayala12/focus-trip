@@ -1,0 +1,99 @@
+.panel {
+  position: relative;
+  z-index: 5;
+  margin-top: -80px;
+  padding: 0 20px 20px;
+}
+
+.eta-block {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.eta-left {
+}
+
+.eta-sublabel {
+  font-size: 10px;
+  color: rgba(240, 237, 232, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 2px;
+}
+
+.eta-number {
+  font-family: var(--font-mono);
+  font-size: 64px;
+  font-weight: 700;
+  color: #f5a623;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.eta-right {
+  text-align: right;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.route-label {
+  font-size: 12px;
+  color: rgba(240, 237, 232, 0.5);
+  font-weight: 500;
+
+  &--dest {
+    color: rgba(240, 237, 232, 0.8);
+  }
+}
+
+.route-arrow {
+  font-size: 11px;
+  color: rgba(245, 166, 35, 0.5);
+  text-align: right;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.stat {
+  background: rgba(28, 30, 38, 0.9);
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 12px 14px;
+  backdrop-filter: blur(10px);
+
+  &__label {
+    font-size: 9px;
+    color: rgba(240, 237, 232, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  &__value {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    font-weight: 500;
+    color: #f0ede8;
+    line-height: 1;
+
+    &--sm {
+      font-size: 13px;
+      padding-top: 4px;
+      color: rgba(240, 237, 232, 0.6);
+    }
+  }
+
+  &__unit {
+    font-size: 10px;
+    color: rgba(240, 237, 232, 0.35);
+    margin-left: 2px;
+  }
+}

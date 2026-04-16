@@ -57,13 +57,33 @@
             justify-content: center;
             flex-direction: column;
             gap: 37px;
+
+            &__status {
+                font-family: var(--font-mono);
+                font-size: 13px;
+                color: var(--color-muted);
+                letter-spacing: 0.08em;
+                animation: fadeIn 1s ease;
+            }
         }
 
         .car {
-            transform: scale(2.1);
-            margin-right: 70px;
+            margin-right: 100px;
+            animation: car-idle 1.2s ease-in-out infinite alternate;
+
+            &__wheel--left,
+            &__wheel--right {
+                transform-box: fill-box;
+                transform-origin: center;
+                animation: wheel-spin 0.6s linear infinite;
+            }
+
+            &__wheel--right {
+                animation-delay: 0.1s;
+            }
+
             &__body {
-                animation: shake 0.3s ease-in-out infinite alternate;
+                animation: shake 0.5s ease-in-out infinite alternate;
             }
         }
 
@@ -73,35 +93,38 @@
             }
 
             100% {
-                transform: translateY(3%);
+                transform: translateY(2%);
             }
         }
 
-        @keyframes line {
-            0% {
-                stroke-dashoffset: 22;
+        @keyframes wheel-spin {
+            from {
+                transform: rotate(0deg);
             }
 
-            25% {
-                stroke-dashoffset: 22;
-            }
-
-            50% {
-                stroke-dashoffset: 0;
-            }
-
-            51% {
-                stroke-dashoffset: 0;
-            }
-
-            80% {
-                stroke-dashoffset: -22;
-            }
-
-            100% {
-                stroke-dashoffset: -22;
+            to {
+                transform: rotate(360deg);
             }
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes car-idle {
+            from {
+                transform: scale(2.1) translateX(-2px);
+            }
+
+            to {
+                transform: scale(2.1) translateX(20px);
+            }
+        }
     }
 }
